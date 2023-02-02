@@ -24,7 +24,6 @@ class Scene {
   }
 
   setScene() {
-    console.log('ici')
     const canvasEl = document.querySelector('.scene')
     this.renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio, 2), canvas: canvasEl })
     const gl = this.renderer.gl
