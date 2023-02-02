@@ -1,0 +1,10 @@
+.scene, #root {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.dg.ac {
+  // display: none;
+  z-index: 4 !important;
+}
