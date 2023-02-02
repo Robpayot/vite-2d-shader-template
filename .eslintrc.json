@@ -13,7 +13,7 @@
     "arrow-body-style": 1,
     "import/no-extraneous-dependencies": ["off", { "devDependencies": false }]
   },
-  "ignorePatterns": ["dist", "node_modules", "config/paths.js", "vite.congig.js"],
+  "ignorePatterns": ["dist", "node_modules", "vite.config.js"],
   "env": {
     "browser": true,
     "es6": true

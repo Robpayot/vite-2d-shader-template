@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import glsl from 'vite-plugin-glsl'
 import path from 'path'
 import babel from 'vite-plugin-babel'
+import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,5 +17,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [babel(), glsl()],
+  plugins: [viteCommonjs(), babel(), glsl()],
 })
