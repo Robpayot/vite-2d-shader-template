@@ -1,7 +1,7 @@
 import GUI from 'lil-gui'
 import { Renderer, Program, Color, Mesh, Triangle } from 'ogl'
-// import vertex from '@/js/glsl/main.vert'
-// import fragment from '@/js/glsl/main.frag'
+import vertex from '@/js/glsl/main.vert'
+import fragment from '@/js/glsl/main.frag'
 
 import glsl from 'glslify'
 
@@ -15,7 +15,6 @@ class Scene {
   constructor() {
     this.setGUI()
     this.setScene()
-    return
     this.events()
   }
 
@@ -32,7 +31,6 @@ class Scene {
     gl.clearColor(1, 1, 1, 1)
 
     this.handleResize()
-    return
 
     // Rather than using a plane (two triangles) to cover the viewport here is a
     // triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.

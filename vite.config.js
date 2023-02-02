@@ -1,12 +1,7 @@
-// vite.config.js
 import { defineConfig } from 'vite'
-// import glsl from 'vite-plugin-glsl'
-import path from 'path'
-// import babel from 'vite-plugin-babel'
-// import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
-// import requireTransform from 'vite-plugin-require-transform'
+import glsl from 'vite-plugin-glsl'
+import { resolve } from 'pathe'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   root: 'src',
   base: './',
@@ -15,8 +10,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': resolve(__dirname, './src'),
     },
   },
-  // plugins: [viteCommonjs(), babel(), glsl(), requireTransform()],
+  plugins: [glsl()],
 })
