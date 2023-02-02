@@ -1,5 +1,5 @@
 // Test import of a JavaScript module
-import Scene from './js/components/scene'
+import Scene from './components/scene'
 
 (() => {
   // scene
