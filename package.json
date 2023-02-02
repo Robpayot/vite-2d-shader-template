@@ -7,7 +7,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "type": "module",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.19.1",
