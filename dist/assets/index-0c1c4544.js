@@ -458,6 +458,6 @@ uniform float uOffset;\r
 varying vec2 vUv;
 
 void main() {\r
-  gl_FragColor.rgb = 0.5 + 0.3 * cos(vUv.xyx * uOffset + uTime) + uColor;\r
+  gl_FragColor.rgb = 0.3 + 0.3 * cos(vUv.xyx * uOffset + uTime) + uColor;\r
   gl_FragColor.a = 1.0;\r
 }`,dt=function(e){typeof e=="string"&&(e=[e]);for(var t=[].slice.call(arguments,1),i=[],s=0;s<e.length-1;s++)i.push(e[s],t[s]||"");return i.push(e[s]),i.join("")};class ti{constructor(){D(this,"renderer");D(this,"mesh");D(this,"program");D(this,"guiObj",{offset:1});D(this,"handleResize",()=>{this.renderer.setSize(window.innerWidth,window.innerHeight)});D(this,"handleRAF",t=>{requestAnimationFrame(this.handleRAF),this.program.uniforms.uTime.value=t*.001,this.renderer.render({scene:this.mesh})});D(this,"guiChange",t=>{this.program.uniforms.uOffset.value=t});this.setGUI(),this.setScene(),this.events()}setGUI(){new X().add(this.guiObj,"offset",.5,4).onChange(this.guiChange)}setScene(){const t=document.querySelector(".scene");this.renderer=new Zt({dpr:Math.min(window.devicePixelRatio,2),canvas:t});const i=this.renderer.gl;i.clearColor(1,1,1,1),this.handleResize();const s=new Ke(i);this.program=new Xt(i,{vertex:dt(Je),fragment:dt(Qe),uniforms:{uTime:{value:0},uColor:{value:new Ze(.3,.2,.5)},uOffset:{value:this.guiObj.offset}}}),this.mesh=new We(i,{geometry:s,program:this.program})}events(){window.addEventListener("resize",this.handleResize,!1),requestAnimationFrame(this.handleRAF)}}new ti;
