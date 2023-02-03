@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "vite-project-builder",
+  "name": "vite-2d-shader-template",
   "version": "0.0.0",
-  "description": "Modern ThreeJS boilerplate powered by Vite & Typescript.",
-  "author": "Alvaro Saburido <hola@alvarosaburido.dev>",
+  "description": "Template to make 2D Webgl effect using OGL, powered by Vite.",
+  "author": "Robin Payot <robpayot@gmail.com>",
   "license": "MIT",
   "type": "module",
   "keywords": [
