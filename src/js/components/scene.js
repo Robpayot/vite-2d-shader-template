@@ -3,8 +3,6 @@ import { Renderer, Program, Color, Mesh, Triangle } from 'ogl'
 import vertex from '@/js/glsl/main.vert'
 import fragment from '@/js/glsl/main.frag'
 
-import glsl from 'glslify'
-
 class Scene {
   renderer
   mesh
@@ -45,8 +43,8 @@ class Scene {
     const geometry = new Triangle(gl)
 
     this.program = new Program(gl, {
-      vertex: glsl(vertex),
-      fragment: glsl(fragment),
+      vertex,
+      fragment,
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new Color(0.3, 0.2, 0.5) },
