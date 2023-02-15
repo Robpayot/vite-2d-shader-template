@@ -2,6 +2,7 @@ import GUI from 'lil-gui'
 import { Renderer, Program, Color, Mesh, Triangle } from 'ogl'
 import vertex from '@/js/glsl/main.vert'
 import fragment from '@/js/glsl/main.frag'
+// import LoaderManager from '@/js/managers/LoaderManager'
 
 class Scene {
   renderer
@@ -41,6 +42,20 @@ class Scene {
     //   (-1, -1)   (3, -1)        (0, 0)   (2, 0)
 
     const geometry = new Triangle(gl)
+
+    // // To load files like textures, do :²
+    // LoaderManager.load(
+    //   [
+    //     {
+    //       name: 'matcap',
+    //       texture: './img/matcap.png',
+    //     },
+    //   ],
+    //   gl
+    // ).then(() => {
+    //   // do something
+    //   console.log(LoaderManager.assets)
+    // })
 
     this.program = new Program(gl, {
       vertex,
