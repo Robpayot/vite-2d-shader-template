@@ -1,7 +1,6 @@
 import { Texture } from 'ogl'
 
 class LoaderManager {
-  assets
   constructor() {
     this.assets = {} // Dictionary of assets, can be different type, gltf, texture, img, font, feel free to make a Enum if using TypeScript
   }
@@ -12,7 +11,7 @@ class LoaderManager {
       for (let i = 0; i < data.length; i++) {
         const { name, texture } = data[i]
 
-        if (texture) {
+        if (texture && !this.assets[name]) {
           promises.push(this.loadTexture(texture, name, gl))
         }
       }
