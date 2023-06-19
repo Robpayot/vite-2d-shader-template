@@ -5,10 +5,10 @@ import fragment from '@/js/glsl/main.frag'
 // import LoaderManager from '@/js/managers/LoaderManager'
 
 class Scene {
-  renderer
-  mesh
-  program
-  guiObj = {
+  #renderer
+  #mesh
+  #program
+  #guiObj = {
     offset: 1,
   }
   constructor() {
@@ -19,13 +19,18 @@ class Scene {
 
   setGUI() {
     const gui = new GUI()
-    gui.add(this.guiObj, 'offset', 0.5, 4).onChange(this.guiChange)
+
+    const handleChange = (value) => {
+      this.#program.uniforms.uOffset.value = value
+    }
+
+    gui.add(this.#guiObj, 'offset', 0.5, 4).onChange(handleChange)
   }
 
   setScene() {
     const canvasEl = document.querySelector('.scene')
-    this.renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio, 2), canvas: canvasEl })
-    const gl = this.renderer.gl
+    this.#renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio, 2), canvas: canvasEl })
+    const gl = this.#renderer.gl
     gl.clearColor(1, 1, 1, 1)
 
     this.handleResize()
@@ -57,17 +62,17 @@ class Scene {
     //   console.log(LoaderManager.assets)
     // })
 
-    this.program = new Program(gl, {
+    this.#program = new Program(gl, {
       vertex,
       fragment,
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new Color(0.3, 0.2, 0.5) },
-        uOffset: { value: this.guiObj.offset },
+        uOffset: { value: this.#guiObj.offset },
       },
     })
 
-    this.mesh = new Mesh(gl, { geometry, program: this.program })
+    this.#mesh = new Mesh(gl, { geometry, program: this.#program })
   }
 
   events() {
@@ -76,20 +81,16 @@ class Scene {
   }
 
   handleResize = () => {
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.#renderer.setSize(window.innerWidth, window.innerHeight)
   }
 
   handleRAF = (t) => {
     requestAnimationFrame(this.handleRAF)
 
-    this.program.uniforms.uTime.value = t * 0.001
+    this.#program.uniforms.uTime.value = t * 0.001
 
     // Don't need a camera if camera uniforms aren't required
-    this.renderer.render({ scene: this.mesh })
-  }
-
-  guiChange = (value) => {
-    this.program.uniforms.uOffset.value = value
+    this.#renderer.render({ scene: this.#mesh })
   }
 }
 
